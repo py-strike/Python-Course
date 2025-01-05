@@ -4,3 +4,7 @@ my_dictionary = {
     "age": 22,
     "love_python": True,
 }
+
+print(my_dictionary["name"])
+print(my_dictionary["age"])
+print(my_dictionary["love_python"])
