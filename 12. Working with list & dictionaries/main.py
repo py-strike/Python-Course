@@ -50,3 +50,7 @@ print(num_3)
 people = [{'name':'a', 'age': 21}, {'name':'b', 'age': 25}, {'name':'c', 'age': 34}]
 names = [p['name'] for p in people]
 print(names)
+
+# dictionary comprehension
+d_11 = {key.upper(): value*2 for key, value in d1.items()}
+print(d_11)
