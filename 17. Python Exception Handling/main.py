@@ -12,4 +12,4 @@ try:
     number = int(u2)
     print(f"the num you entred minus one is : {number - 1}")
 except Exception: # generic type of exception
-    print("This is not a number")
+    print("exception")
