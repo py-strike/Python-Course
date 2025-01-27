@@ -18,7 +18,12 @@ def repeat_striung(s, nb_of_rep):
 
     return s*nb_of_rep
 
-s = input("Enter a text to be repeted : ")
-nb_of_rep = int(input("Enter the number od repetetion : "))
+# s = input("Enter a text to be repeted : ")
+# nb_of_rep = int(input("Enter the number od repetetion : "))
 
-print(repeat_striung(s, nb_of_rep))
+try:
+    print(repeat_striung("hello", 'k'))
+except TypeError as e:
+    print(str(e))
+finally:
+    print("The Program is ending")
