@@ -11,3 +11,7 @@ if a == c :
     print("a is c")
 else:
     print("a is not c")
+
+# Ternary operator
+y = "YES" if x > 15 else "NO"
+print(y)
