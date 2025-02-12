@@ -31,6 +31,23 @@ def add_to_list(shopping_list: list):
 
     shopping_list.append(new_product)
     print(f"Product {name} added.")
+
+def remove_from_list(shopping_list: list):
+    view_list(shopping_list)
+    print()
+
+    number_to_remove_str = input("Enter the number of the item you want to remove : ")
+
+    try:
+        number_to_remove = int(number_to_remove_str)
+    except ValueError:
+        print("That is not a valid number.")
+    else:
+        if number_to_remove >= len(shopping_list):
+            print("That number is not in the list")
+        else:
+            del shopping_list[number_to_remove - 1]
+            print(f"The Item number {number_to_remove} was deleted")
     
 
 while True:
@@ -43,7 +60,7 @@ while True:
         add_to_list(shopping_list)
         print("----------------------")
     elif responce == "3":
-        print("Remove from the List")
+        remove_from_list(shopping_list)
         print("----------------------")
     elif responce == "4":
         print("Quiting")
