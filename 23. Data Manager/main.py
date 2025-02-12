@@ -1,3 +1,6 @@
+import json
+import os
+
 init_msg = "What you want to Do?\n" \
 "1. View List.\n" \
 "2. Add to the List.\n" \
@@ -5,12 +8,13 @@ init_msg = "What you want to Do?\n" \
 "4. Quit.\n" \
 "Your choice is : "
 
-shopping_list = [
-    {
-        "name": "Apples",
-        "quantity": "1 Kg.",
-    },
-]
+# Check if the file exists, if not create it with an empty list
+if not os.path.exists("shopping_list.json"):
+    with open("shopping_list.json", "w") as file:
+        json.dump([], file)
+
+with open('shopping_list.json', 'r') as file:
+    shopping_list = json.load(file)
 
 def view_list(shopping_list: list):
     for index, item in enumerate(shopping_list):
@@ -47,5 +51,7 @@ while True:
         break
     else:
         print("this is not a valid option")
-    
+
+    with open("shopping_list.json", "w") as file:
+        json.dump(shopping_list, file)
 
