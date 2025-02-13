@@ -1,0 +1,4 @@
+Exercise
+Copying Elements: Write a program to copy all elements of a given list into a new list using a for loop.
+Element Position Retrieval: Write a function to retrieve an element from a list at a given position.
+Iterating a List: Use a loop to print all elements of a list in forward and reverse order.
