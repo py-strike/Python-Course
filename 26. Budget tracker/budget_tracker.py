@@ -1,45 +1,55 @@
+import json
+
+def view_budget():
+    print("view_budget")
+
+def add_budget():
+    print("add_budget")
+
+def remove_budget():
+    print("remove_budget")
+
+def add_expense():
+    print("add_expense")
+
+def remove_expense():
+    print("remove_expense")
+
+def exit_program():
+    print("exit_program")
+
 possible_actions = [
-    {'name': 'View Budget'},
-    {'name': 'Add Budget'},
-    {'name': 'Remove Budget'},
-    {'name': 'Add Expense'},
-    {'name': 'Remove Expense'},
-    {'name': 'Exit Program'},
+    {'name': 'View Budget',
+     'action': view_budget},
+    {'name': 'Add Budget',
+     'action': add_budget},
+    {'name': 'Remove Budget',
+     'action': remove_budget},
+    {'name': 'Add Expense',
+     'action': add_expense},
+    {'name': 'Remove Expense',
+     'action': remove_expense},
+    {'name': 'Exit Program',
+     'action': exit_program},
 ]
 
-def run_program(actions):
+def run_program(actions, file_name):
     while True:
+        with open(file_name, 'r') as file:
+            Budget_tracker_data = json.load(file)
+        
         print("Choose an action : ")
         for index, action in enumerate(actions):
             print(f"{index + 1}. {action['name']}.")
         
         user_chosse = input("--> ")
-        chosen_action = possible_actions[int(user_chosse) - 1]['name']
-        print(f"Y'ouve chosen : {chosen_action}")
+        chosen_action = possible_actions[int(user_chosse) - 1]
+        updated_data = chosen_action['action']()
         print("----------------------")
 
-run_program(possible_actions)
+        with open(file_name, "w") as file:
+            json.dump(updated_data, file)
 
-# init_msg = ""
+run_program(possible_actions, 'budget_tracker_data.json')
 
-# while True:
-#     responce = input(init_msg)
-#     print("----------------------")
-#     if responce == "1":
-#         view_budget(shopping_list)
-#         print("----------------------")
-#     elif responce == "2":
-#         add_remove_items(shopping_list)
-#         print("----------------------")
-#     elif responce == "3":
-#         add_remove_items(shopping_list)
-#         print("----------------------")
-#     elif responce == "4":
-#         print("Quiting")
-#         print("----------------------")
-#         break
-#     else:
-#         print("this is not a valid option")
 
-#     with open("shopping_list.json", "w") as file:
-#         json.dump(shopping_list, file)
