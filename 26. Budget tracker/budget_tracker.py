@@ -1,22 +1,43 @@
 import json
 
-def view_budget():
+def view_budget(data):
     print("view_budget")
+    return data
 
-def add_budget():
-    print("add_budget")
+def add_budget(data):
+    name = input("Enter the name of the new category : ")
+    amount = int(input("Enter the budget amount : "))
+    new_item = {
+        'name': name,
+        'amount': amount,
+    }
+    data['categories'].append(new_item)
 
-def remove_budget():
-    print("remove_budget")
+    return data
 
-def add_expense():
-    print("add_expense")
+def remove_budget(data):
+    name = input("Enter the name of the category you want to remove : ")
+    data['categories'] = [c for c in data['categories'] if c['name'] != name]
+    return data
 
-def remove_expense():
-    print("remove_expense")
+def add_expense(data):
+    name = input("Enter the name of the new Expense : ")
+    amount = int(input("Enter the budget amount : "))
+    new_item = {
+        'name': name,
+        'amount': amount,
+    }
+    data['expenses'].append(new_item)
+    return data
 
-def exit_program():
+def remove_expense(data):
+    name = input("Enter the name of the expense you want to remove : ")
+    data['expenses'] = [c for c in data['expenses'] if c['name'] != name]
+    return data
+
+def exit_program(data):
     print("exit_program")
+    return data
 
 possible_actions = [
     {'name': 'View Budget',
@@ -43,8 +64,10 @@ def run_program(actions, file_name):
             print(f"{index + 1}. {action['name']}.")
         
         user_chosse = input("--> ")
+
         chosen_action = possible_actions[int(user_chosse) - 1]
-        updated_data = chosen_action['action']()
+        updated_data = chosen_action['action'](Budget_tracker_data)
+
         print("----------------------")
 
         with open(file_name, "w") as file:
