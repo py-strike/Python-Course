@@ -1,1 +1,1 @@
-{"categories": [{"name": "vacation", "amount": 10000}, {"name": "Groceries", "amount": 4000}], "expenses": [{"name": "buy kesra", "amount": 140}]}
+{"categories": [{"name": "workout", "amount": 2000}, {"name": "kesra", "amount": "5000"}], "expenses": [{"name": "7", "category": "workout", "amount": 20}]}

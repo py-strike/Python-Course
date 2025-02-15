@@ -1,12 +1,18 @@
 import json
 
 def view_budget(data):
-    print("view_budget")
+    print("Budget Categories :")
+    for category in data['categories']:  # FIXED: Iterate over the correct key
+        category_expense_amounts = [e['amount'] for e in data['expenses'] if e['category'] == category['name']]
+        total = sum(category_expense_amounts)
+        print(f"{category['name']} -> ${category['amount'] - total}")
+
     return data
+
 
 def add_budget(data):
     name = input("Enter the name of the new category : ")
-    amount = int(input("Enter the budget amount : "))
+    amount = (input("Enter the budget amount : "))
     new_item = {
         'name': name,
         'amount': amount,
@@ -22,9 +28,11 @@ def remove_budget(data):
 
 def add_expense(data):
     name = input("Enter the name of the new Expense : ")
+    category = input("Enter the category name of the new Expense : ")
     amount = int(input("Enter the budget amount : "))
     new_item = {
         'name': name,
+        'category': category,
         'amount': amount,
     }
     data['expenses'].append(new_item)
@@ -55,6 +63,11 @@ possible_actions = [
 ]
 
 def run_program(actions, file_name):
+    # actions_with_exit = [*actions, {
+    #     'name': 'Exit Program',
+    #     'action': exit_program,
+    # }]
+
     while True:
         with open(file_name, 'r') as file:
             Budget_tracker_data = json.load(file)
